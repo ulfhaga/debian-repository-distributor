@@ -1,0 +1,31 @@
+{
+    "name": "uh/debina-repository-distributor",
+    "description": "Repository for Debian packages.",
+    "type": "project",
+    "license": "NONE",
+    "authors": [
+        {
+            "name": "ulfhaga",
+            "email": "ulf.haga@gmail.com"
+        }
+    ],
+    "require": {},
+    "require-dev": {
+        "pds/skeleton": "~1.0"
+    },
+    "scripts": {
+        "docker-build": [
+            "./deployement/docker/build.sh"
+        ],
+        "docker-run": [
+            "./deployement/docker/run.sh"
+        ],
+        "docker-compose-up": [
+            "./deployement/docker-compose/run.sh"
+        ],
+        "clean-up": [
+            "./deployement/docker-compose/clean-up.sh",
+            "./deployement/docker/clean-up.sh"
+        ]
+    }
+}
