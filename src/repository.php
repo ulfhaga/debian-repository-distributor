@@ -1,3 +1,6 @@
+<?php
+require 'bootstrap.php';
+?>
 <!DOCTYPE html>
 <html>
 <head>

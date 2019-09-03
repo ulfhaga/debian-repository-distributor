@@ -10,20 +10,26 @@ RUN echo "file_uploads = On" >> /usr/local/etc/php/php.ini
 RUN echo "upload_max_filesize = 100M" >> /usr/local/etc/php/php.ini
 RUN echo "post_max_size = 100M" >> /usr/local/etc/php/php.ini
 
-# Install packages
+# Install mandatory packages
 RUN apt-get update
 RUN apt-get install -y dpkg-dev
-RUN apt-get install -y gedit
+
+# Install optional packages
 RUN apt-get install -y curl
 RUN apt-get install -y vim
+RUN apt-get install -y tree
+RUN apt-get install -y leafpad
 
 # Web context
 COPY index.html /var/www/html
 COPY style.css /var/www/html
 COPY mystyle.css /var/www/html
 COPY repository.php /var/www/html
+COPY bootstrap.php /var/www/html  
 COPY info.php /var/www/html
 COPY upload.php  /var/www/html
+COPY DebToox /var/www/html/DebToox/
+COPY vendor /var/www/html/vendor/
 
 # Create repository file structure
 COPY repoCreate.sh /tmp
@@ -31,4 +37,5 @@ RUN  chmod u+x /tmp/repoCreate.sh
 RUN  /tmp/repoCreate.sh
 RUN  chmod -R 777  /var/local/apt/debtoox/pool
 RUN  ln -s /var/local/apt/debtoox /var/www/html/
+RUN  rm  /tmp/repoCreate.sh
 

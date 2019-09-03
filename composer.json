@@ -9,7 +9,13 @@
             "email": "ulf.haga@gmail.com"
         }
     ],
-    "require": {},
+    "autoload": {
+        "psr-4": {
+            "DebToox\\": "DebToox/"
+        }
+    },
+    "require": {
+    },
     "require-dev": {
         "pds/skeleton": "~1.0"
     },
@@ -26,6 +32,12 @@
         "clean-up": [
             "./deployement/docker-compose/clean-up.sh",
             "./deployement/docker/clean-up.sh"
-        ]
+        ],
+        "php-lint": [
+            "find src -name *.php | xargs -I¤ php -l -f ¤"
+        ],
+        "pds-validate": [
+            "./vendor/bin/pds-skeleton validate"
+        ] 
     }
 }

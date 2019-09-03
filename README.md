@@ -49,7 +49,7 @@ In a brower open the url http://localhost:58763
 ## Upload a Debina package with cUrl
 
 `
-curl -X POST -H "Content-Type: multipart/form-data;" -F "suit=${suit}  -F "repotype=${components}" -F "package=@${file}" http://${repository_host}/upload.php
+curl -X POST -H "Content-Type: multipart/form-data;" -F "suit=${suit}  -F "repotype=${components}" -F "package=@${file}" http://${repository_host}::58763/upload.php
 `
 
 ${suit}: _stable_ or _unstable_
@@ -66,7 +66,7 @@ ${repository_host}: The docker conatiners IP och host name.
 Example to upload the file openjdk-7-jre_7u65-2.5.2-3~10.04.1_amd64.debto the repository:
 
 
-### Start the repository with docker compose
+### Start the repository with docker composeDeb
 
     composer docker-compose-up
 
@@ -84,7 +84,7 @@ Example to upload the file openjdk-7-jre_7u65-2.5.2-3~10.04.1_amd64.debto the re
     file=openjdk-7-jre_7u65-2.5.2-3~10.04.1_amd64.deb;
     repository_host=localhost:58763;
 
-    curl -s -o /dev/null -w "%{http_code}" -X POST -H "Content-Type: multipart/form-data;" -F "suit=unstable"  -F "repotype=contrib" -F "package=@${file}" http://${repository_host}/upload.php | xargs echo HTTP response code: | grep 200 || echo Error: Not uploaded
+   curl -X POST -H "Content-Type: multipart/form-data;" -F "suit=unstable"  -F "formatter=json"  -F "repotype=contrib" -F "package=@${file}" http://${repository_host}/upload.php 
 ```
 
 ## Add repository on your PC with curl

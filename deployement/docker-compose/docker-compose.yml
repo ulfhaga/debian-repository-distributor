@@ -1,22 +1,24 @@
+---
 version: "3.7"
 
 services:
 
   debian-repository:
     container_name: debian-repository
-    image: debian-repository:latest 
+    image: debian-repository:latest
     build:
       context: ../context
       dockerfile: ../docker/Dockerfile
     restart: unless-stopped
     environment:
-      - DOCKERHOST=${host:?err}
+      DISPLAY: ":0"
+      DOCKERHOST: ${host:?err}
+
     volumes:
       - pool-volume:/var/www/html/debtoox/pool
+      - /tmp/.X11-unix:/tmp/.X11-unix
     ports:
       - "58763:80"
-
 volumes:
   pool-volume:
     name: pool
-
