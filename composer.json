@@ -21,23 +21,26 @@
     },
     "scripts": {
         "docker-build": [
-            "./deployement/docker/build.sh"
+            "./deployment/docker/build.sh"
         ],
         "docker-run": [
-            "./deployement/docker/run.sh"
+            "./deployment/docker/run.sh"
         ],
         "docker-compose-up": [
-            "./deployement/docker-compose/run.sh"
+            "./deployment/docker-compose/run.sh"
         ],
         "clean-up": [
-            "./deployement/docker-compose/clean-up.sh",
-            "./deployement/docker/clean-up.sh"
+            "./deployment/docker-compose/clean-up.sh",
+            "./deployment/docker/clean-up.sh"
         ],
         "php-lint": [
             "find src -name *.php | xargs -I¤ php -l -f ¤"
         ],
         "pds-validate": [
             "./vendor/bin/pds-skeleton validate"
+        ],
+        "docker-tar-ball": [
+            "./deployment/manually/build.sh"
         ] 
     }
 }
