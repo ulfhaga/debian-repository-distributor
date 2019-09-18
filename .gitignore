@@ -1,4 +1,4 @@
 /vendor/
 *.code-workspace/
 *.code-workspace
-deployement/context/
+deployment/context/
