@@ -18,7 +18,7 @@
     An example with the program Curl to upload a Debian package: <br>
     <code>
     file=hello_1.0.0-1_all.deb; <br>
-    curl -X POST -H "Content-Type: multipart/form-data;" -F "suit=unstable"  -F "repotype=contrib" -F "package=@${file}" http://localhost:58763/upload.php
+    curl -X POST -H "Content-Type: multipart/form-data;"-F "suit=unstable" -F "repotype=contrib" -F "package=@${file}" -F "formatter=json" http://localhost:58763/upload.php
     </code>
 </p>
 </body>
