@@ -26,6 +26,7 @@ COPY style.css /var/www/html
 COPY mystyle.css /var/www/html
 COPY repository.php /var/www/html
 COPY bootstrap.php /var/www/html  
+COPY index.php /var/www/html
 COPY info.php /var/www/html
 COPY upload.php  /var/www/html
 COPY DebToox /var/www/html/DebToox/
