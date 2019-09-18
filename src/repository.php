@@ -17,8 +17,8 @@ require 'bootstrap.php';
 <body>
  Adds a repository into the folder /etc/apt/sources.list.d/  on your computer <br>
 <?php
-  $hostName = getenv('DOCKERHOST');
-  echo "sudo echo deb [trusted=yes] http://$hostName:58763/debtoox "
+  $hostName = getenv('HTTP_HOST');
+  echo "sudo echo deb [trusted=yes] http://$hostName/debtoox "
 ?>
 <scan id="p1"></scan>
 &nbsp;
