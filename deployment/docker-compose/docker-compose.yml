@@ -12,8 +12,6 @@ services:
     restart: unless-stopped
     environment:
       DISPLAY: ":0"
-      DOCKERHOST: ${host:?err}
-
     volumes:
       - pool-volume:/var/www/html/debtoox/pool
       - /tmp/.X11-unix:/tmp/.X11-unix
