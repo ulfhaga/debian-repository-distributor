@@ -48,8 +48,7 @@ In a brower open the url http://localhost:58763
 
 ## Upload a Debina package with cUrl
 
-`
-curl -X POST -H "Content-Type: multipart/form-data;" -F "suit=${suit}  -F "repotype=${components}" -F "package=@${file}" http://${repository_host}::58763/upload.php
+curl -X POST -H "Content-Type: multipart/form-data;" -F "suit=${suit}  -F "repotype=${components}" -F "package=@${file}" http://${repository_host}:58763/upload.php
 `
 
 ${suit}: _stable_ or _unstable_
@@ -97,4 +96,4 @@ echo "deb [trusted=yes] http://${repository_host}/debtoox stable main contrib no
 
 ##  Install the package
 
-   apt-get install 
+    apt-get install openjdk-7-jre_7u65
