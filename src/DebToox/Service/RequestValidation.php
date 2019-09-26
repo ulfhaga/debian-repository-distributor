@@ -21,7 +21,7 @@ class RequestValidation
 
     public function isUploadFileValid($files)
     {
-        $status = FALSE;
+        $status = false;
 
         if (isset($files['package']) && $files["package"]["error"] == 0) {
             $file_name = $_FILES['package']['name'];
@@ -33,24 +33,20 @@ class RequestValidation
             if (!empty($file_tmp)) {
                 if (in_array($file_ext, $expansion_packages) === false) {
                     $errors = 'Extension not allowed, please choose a Debian package file.';
-                    http_response_code(404);
-                    throw new Exception($errors);
+                    throw new Exception($errors, 404);
                 } else {
                     if ($file_size > 209715200) {
                         $errors = 'File size must be less than 200 MB';
-                        http_response_code(404);
-                        throw new Exception($errors);
+                        throw new Exception($errors, 404);
                     } else {
-                        $status = TRUE;
+                        $status = true;
                     }
                 }
             } else {
-                http_response_code(404);
-                throw new Exception("Upload file missing");
+                throw new Exception("Upload file missing", 404);
             }
         } else {
-            http_response_code(404);
-            throw new Exception("Upload file missing");
+            throw new Exception("Upload file missing", 404);
         }
         return $status;
     }

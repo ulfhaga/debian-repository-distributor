@@ -11,18 +11,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $formatter = $_POST["formatter"];
         $requestValidation = new RequestValidation();
         if (!$requestValidation->isRepoTypeValid($repotype)) {
-            http_response_code(404);
-            throw new Exception("Wrong repository type");
+            throw new Exception("Wrong repository type", 404);
         }
         $suit = $_POST["suit"];
         if (!$requestValidation->isSuitValid($suit)) {
-            http_response_code(404);
-            throw new Exception("Wrong repository suit");
+            throw new Exception("Wrong repository suit", 404);
         }
         $isUploadFileValid=$requestValidation->isUploadFileValid($_FILES);
         if (!$isUploadFileValid) {
-            http_response_code(404);
-            throw new Exception("Upload file not valid");
+            throw new Exception("Upload file not valid", 404);
         }
         $file_tmp  = $_FILES['package']['tmp_name'];
         $file_name = $_FILES['package']['name'];
@@ -63,7 +60,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         }
     } catch (Exception $e) {
         if ($formatter == 'json') {
-            echo  "{\"code\": " . http_response_code() . "\"message\": \"File uploaded\"}";
+            $httpResposeCode = $e->getCode();
+            http_response_code($httpResposeCode);
+            echo  "{\"code\": " . $httpResposeCode . "\"message\": \"File uploaded\"}";
         } else {
             ?>
         <!DOCTYPE html>
@@ -85,7 +84,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         window.history.back();
         }
         </script>
-<?php echo 'ExceptionMessage: ' .$e->getMessage(); ?>
+        <?php echo 'Error message: ' . $e->getMessage() ?>
         <button onclick="goBack()">Go Back</button>
         </body>
         </html>
