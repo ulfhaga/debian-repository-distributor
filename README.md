@@ -1,7 +1,7 @@
 # Debian repository
 
 Setting up a Debian repository in Docker container.
-The Debain package can be upload by a Web page or by [cUrl](https://en.wikipedia.org/wiki/CURL) to the respository.
+The Debian package can be upload by a Web page or by [cUrl](https://en.wikipedia.org/wiki/CURL) to the respository.
 
 ## Overview
 
